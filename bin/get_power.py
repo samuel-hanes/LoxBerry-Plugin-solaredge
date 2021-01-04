@@ -65,8 +65,9 @@ def main():
 
     if msg != None:
         send_udp(miniserver, udp_port, msg)
+        logging.info("<INFO> Message sent to Miniserver IP:", miniserver)
     else:
-        logging.info("<INFO> Nothing sent to Miniserver IP", miniserver)
+        logging.error("<ERROR> Nothing sent to Miniserver IP:", miniserver)
 
 
 if __name__ == "__main__":
