@@ -21,7 +21,7 @@ def main():
     """loxberry plugin for solaredge PV API sends every 5 minutes the actual
     power production value to the miniserver"""
     # create file strings from os environment variables
-    lbplog = os.environ['LBPLOG'] + "/synology/solaredge.log"
+    lbplog = os.environ['LBPLOG'] + "/solaredge/solaredge.log"
     lbpconfig = os.environ['LBPCONFIG'] + "/solaredge/plugin.cfg"
     lbsconfig = os.environ['LBSCONFIG'] + "/general.cfg"
 
