@@ -12,6 +12,7 @@ def send_udp(MINISERVER_IP, UDP_PORT, MESSAGE):
         # start the server listening on UDP socket
         sock = socket.socket( socket.AF_INET, socket.SOCK_DGRAM )
         sock.sendto( MESSAGE.encode('ascii'), (MINISERVER_IP, UDP_PORT) )
+        logging.debug("<DEBUG> Message: ", MESSAGE)
     except:
         logging.error("<ERROR> Failed to send message to miniserver socket!")
         logging.debug("<DEBUG> Message: ", MESSAGE)
@@ -25,8 +26,7 @@ def main():
     lbsconfig = os.environ['LBSCONFIG'] + "/general.cfg"
 
     # creating log file and set log format
-    logging.basicConfig(filename=lbplog,level=logging.DEBUG,format='%(asctime)s: %(message)s ')
-    logging.info("<INFO> initialise logging...")
+    logging.basicConfig(filename=lbplog,level=logging.INFO,format='%(asctime)s: %(message)s ')
     # open config file and read options
     try:
         from solaredge_interface.api.SolarEdgeAPI import SolarEdgeAPI
@@ -65,9 +65,9 @@ def main():
 
     if msg != None:
         send_udp(miniserver, udp_port, msg)
-        logging.info("<INFO> Message sent to Miniserver IP:", miniserver)
+        logging.info("<INFO> Message sent to Miniserver IP: %s" % miniserver)
     else:
-        logging.error("<ERROR> Nothing sent to Miniserver IP:", miniserver)
+        logging.error("<ERROR> Nothing sent to Miniserver IP: %s" % miniserver)
 
 
 if __name__ == "__main__":
