@@ -15,7 +15,7 @@ try:
     while True:
         data, addr = sock.recvfrom( 1024 ) # read data with buffer size of 1024 bytes
         data = str(data.decode('ascii'))
-        logging.debug("<DEBUG> Received message: ", data)
+        print("<DEBUG> Received message:", data)
 
 except:
-    logging.info("<ERROR> failed to bind socket!")
+    print("<ERROR> failed to bind socket!")

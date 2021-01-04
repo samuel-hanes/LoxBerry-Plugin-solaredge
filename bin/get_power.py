@@ -5,11 +5,6 @@ import socket
 import logging
 from configparser import ConfigParser
 import json
-try:
-    from solaredge_interface.api.SolarEdgeAPI import SolarEdgeAPI
-except:
-    print("Failed to load SolarEdgeAPI")
-    return
 
 def send_udp(MINISERVER_IP, UDP_PORT, MESSAGE):
     """ """
@@ -34,6 +29,11 @@ def main():
     logging.info("<INFO> initialise logging...")
     # open config file and read options
     try:
+        from solaredge_interface.api.SolarEdgeAPI import SolarEdgeAPI
+    except:
+        logging.error("<ERROR> Error loading SolarEdgeAPI module... exit script")
+        return
+    try:
         cfg = ConfigParser()
         global_cfg = ConfigParser()
         cfg.read(lbpconfig)
@@ -44,8 +44,13 @@ def main():
     #define variables with values from config files
     apiKey = cfg.get("SOLAREDGE", "API_KEY")
     location = cfg.get("SOLAREDGE", "LOCATION")
+    # comment for local debugging
     miniserver = global_cfg.get("MINISERVER1", "IPADDRESS")
     udp_port = int(cfg.get("MINISERVER", "PORT"))
+    # uncomment for local debugging
+    #miniserver = "127.0.0.1"
+    #udp_port = 15555
+
 
     try:
         api = SolarEdgeAPI(api_key=apiKey, datetime_response=True, pandas_response=False)
