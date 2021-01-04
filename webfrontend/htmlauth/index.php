@@ -64,27 +64,27 @@ else {
                     <div class="divTableCell"><h3><?=$L['TEXT.API'].' '.$L['TEXT.SETTINGS']?></h3></div>
                 </div>
                 <div class="divTableRow">
-                    <div class="divTableCell" style="width:25%"><?=$L['TEXT.API_KEY']?></div>
-                    <div class="divTableCell"><input type="text" name="api_key" id="api_key" value="<?=$api_key?>"></div>
-                    <div class="divTableCell" style="width:25%"><span class="hint"><?=$L['HELP.API']?></span></div>
+									<div class="divTableCell" style="width:25%"><?=$L['TEXT.API_KEY']?></div>
+									<div class="divTableCell"><input type="text" name="api_key" id="api_key" value="<?=$api_key?>"></div>
+									<div class="divTableCell" style="width:25%"><span class="hint"><?=$L['HELP.API']?></span></div>
                 </div>
                 <div class="divTableRow">
-                    <div class="divTableCell"><?=$L['TEXT.LOCATION']?></div>
-                    <div class="divTableCell"><input type="number" name="location" id="location"></div>
-                    <div class="divTableCell"><?=$L['HELP.LOCATION']?></div>
+									<div class="divTableCell"><?=$L['TEXT.LOCATION']?></div>
+									<div class="divTableCell"><input type="number" name="location" id="location" value="<?=$location?>"></div>
+									<div class="divTableCell"><?=$L['HELP.LOCATION']?></div>
                 </div>
                 <div class="divTableRow">
-                    <div class="divTableCell"><h3><?=$L['TEXT.SRV'].' '.$L['TEXT.SETTINGS']?></h3></div>
+									<div class="divTableCell"><h3><?=$L['TEXT.SRV'].' '.$L['TEXT.SETTINGS']?></h3></div>
                 </div>
                 <div class="divTableRow">
-                    <div class="divTableCell"><?=$L['TEXT.PORT']?></div>
-										<div class="divTableCell"><input type="number" name="ms_port" id="ms_port" min="1025" max="65535" value="<?=$ms_port?>" data-validation-rule="special:number-min-max-value:1025:65535"></div>
-										<div class="divTableCell"><?=$L['HELP.PORT']?></div>
+									<div class="divTableCell"><?=$L['TEXT.PORT']?></div>
+									<div class="divTableCell"><input type="number" name="ms_port" id="ms_port" min="1025" max="65535" value="<?=$ms_port?>" data-validation-rule="special:number-min-max-value:1025:65535"></div>
+									<div class="divTableCell"><?=$L['HELP.PORT']?></div>
                 </div>
 								<div class="divTableRow">
-                    <div class="divTableCell">&nbsp;</div>
-                    <div class="divTableCell"><input type="submit" id="do" value="<?=$L['TEXT.SAVE']?>" data-mini="true"></div>
-                    <div class="divTableCell"><a id="btnlogs" data-role="button" href="/admin/system/tools/logfile.cgi?logfile=plugins/solaredge/solaredge.log&header=html&format=template" target="_blank" data-inline="true" data-mini="true" data-icon="action"><?=$L['TEXT.LOGFILE']?></a></div>
+									<div class="divTableCell">&nbsp;</div>
+									<div class="divTableCell"><input type="submit" id="do" value="<?=$L['TEXT.SAVE']?>" data-mini="true"></div>
+									<div class="divTableCell"><a id="btnlogs" data-role="button" href="/admin/system/tools/logfile.cgi?logfile=plugins/solaredge/solaredge.log&header=html&format=template" target="_blank" data-inline="true" data-mini="true" data-icon="action"><?=$L['TEXT.LOGFILE']?></a></div>
                 </div>
             </div>
         </div>
