@@ -81,6 +81,11 @@ else {
 										<div class="divTableCell"><input type="number" name="ms_port" id="ms_port" min="1025" max="65535" value="<?=$ms_port?>" data-validation-rule="special:number-min-max-value:1025:65535"></div>
 										<div class="divTableCell"><?=$L['HELP.PORT']?></div>
                 </div>
+								<div class="divTableRow">
+                    <div class="divTableCell">&nbsp;</div>
+                    <div class="divTableCell"><input type="submit" id="do" value="<?=$L['TEXT.SAVE']?>" data-mini="true"></div>
+                    <div class="divTableCell"><a id="btnlogs" data-role="button" href="/admin/system/tools/logfile.cgi?logfile=plugins/solaredge/solaredge.log&header=html&format=template" target="_blank" data-inline="true" data-mini="true" data-icon="action"><?=$L['TEXT.LOGFILE']?></a></div>
+                </div>
             </div>
         </div>
 </form>
