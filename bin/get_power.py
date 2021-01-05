@@ -27,6 +27,7 @@ def main():
 
     # creating log file and set log format
     logging.basicConfig(filename=lbplog,level=logging.INFO,format='%(asctime)s: %(message)s ')
+    #logging.info("<INFO> initialise logging...")
     # open config file and read options
     try:
         from solaredge_interface.api.SolarEdgeAPI import SolarEdgeAPI
@@ -48,17 +49,18 @@ def main():
     miniserver = global_cfg.get("MINISERVER1", "IPADDRESS")
     udp_port = int(cfg.get("MINISERVER", "PORT"))
     # uncomment for local debugging
-    #miniserver = "127.0.0.1"
+    #miniserver = "127.0.0.1" 
     #udp_port = 15555
-
 
     try:
         api = SolarEdgeAPI(api_key=apiKey, datetime_response=True, pandas_response=False)
         response = api.get_site_current_power_flow(location)
         y = json.loads(response.text)
         curPwr = y['siteCurrentPowerFlow']['PV']['currentPower']
+        consPwr = y['siteCurrentPowerFlow']['LOAD']['currentPower']
+        actPwr = float(consPwr) - float(curPwr)
         unit = y['siteCurrentPowerFlow']['unit']
-        msg = str(curPwr)
+        msg = str(actPwr.__round__(2))
     except:
         logging.error("<ERROR> Failed to execute API call...")
         msg = None
