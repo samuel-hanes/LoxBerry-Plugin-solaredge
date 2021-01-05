@@ -68,10 +68,6 @@ cp -v -r $PCONFIG/ /tmp/uploads/$PTEMPDIR\_upgrade/config
 echo "<INFO> Backing up existing log files..."
 cp -v -r $PLOG/ /tmp/uploads/$PTEMPDIR\_upgrade/log
 
-# kill running syno_plugin
-echo "<INFO> kill existing syno_plugin.py process..."
-$LBHOMEDIR/system/daemons/plugins/$PSHNAME stop
-
 # upgrade pip for python
 echo "<INFO> upgrading pip for python..."
 pip3 install --user --upgrade pip
