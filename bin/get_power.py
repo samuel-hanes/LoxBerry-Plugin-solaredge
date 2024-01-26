@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+import requests
 import os
 import socket
 import logging
@@ -53,15 +53,19 @@ def main():
     #udp_port = 15555
 
     try:
-        api = SolarEdgeAPI(api_key=apiKey, datetime_response=True, pandas_response=False)
-        response = api.get_site_current_power_flow(location)
-        y = json.loads(response.text)
-        logging.error("<ERROR>",y)
-        curPwr = y['siteCurrentPowerFlow']['PV']['currentPower']
-        consPwr = y['siteCurrentPowerFlow']['LOAD']['currentPower']
-        actPwr = float(consPwr) - float(curPwr)
-        unit = y['siteCurrentPowerFlow']['unit']
-        msg = str(actPwr.__round__(2))
+        #api = SolarEdgeAPI(api_key=apiKey, datetime_response=True, pandas_response=False)
+        #response = api.get_site_current_power_flow(location)
+        #y = json.loads(response.text)
+        #logging.error("<ERROR>",y)
+        #curPwr = y['siteCurrentPowerFlow']['PV']['currentPower']
+        #consPwr = y['siteCurrentPowerFlow']['LOAD']['currentPower']
+        #actPwr = float(consPwr) - float(curPwr)
+        #unit = y['siteCurrentPowerFlow']['unit']
+        
+        
+        solared = 'https://monitoringapi.solaredge.com/%20site/'+ location + '/overview.json?api_key=' +apiKey
+        response = requests.get(solared).json()
+        msg = str(response)
     except:
         logging.error("<ERROR> Failed to execute API call...")
         msg = None
