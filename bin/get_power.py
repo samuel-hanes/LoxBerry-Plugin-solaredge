@@ -56,6 +56,7 @@ def main():
         api = SolarEdgeAPI(api_key=apiKey, datetime_response=True, pandas_response=False)
         response = api.get_site_current_power_flow(location)
         y = json.loads(response.text)
+        logging.error("<ERROR>",y)
         curPwr = y['siteCurrentPowerFlow']['PV']['currentPower']
         consPwr = y['siteCurrentPowerFlow']['LOAD']['currentPower']
         actPwr = float(consPwr) - float(curPwr)
