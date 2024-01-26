@@ -65,6 +65,7 @@ def main():
         
         solared = 'https://monitoringapi.solaredge.com/%20site/'+ location + '/overview.json?api_key=' +apiKey
         response = requests.get(solared).json()
+        response=response["overview"]["currentPower"]
         msg = str(response)
     except:
         logging.error("<ERROR> Failed to execute API call...")
@@ -73,6 +74,7 @@ def main():
     if msg != None:
         send_udp(miniserver, udp_port, msg)
         logging.info("<INFO> Message sent to Miniserver IP: %s" % miniserver)
+        logging.info(msg)
     else:
         logging.error("<ERROR> Nothing sent to Miniserver IP: %s" % miniserver)
 
